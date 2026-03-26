@@ -1,0 +1,11 @@
+footer {
+  background-color: #3f6288;
+}
+
+footer svg {
+  cursor: pointer;
+}
+
+footer svg:hover {
+  opacity: 0.7;
+}

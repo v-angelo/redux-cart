@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Products from "./pages/Products";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
