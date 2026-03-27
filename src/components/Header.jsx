@@ -34,7 +34,7 @@ function Header() {
               </Badge>
             </Link>
             <Link
-              to={"/wishlist"}
+              to={"/cart"}
               className="text-light text-decoration-none fw-bold"
             >
               <FontAwesomeIcon icon={faHeart} className="btn text-success" />{" "}

@@ -19,7 +19,7 @@ function Products() {
               />
               <Card.Body className="text-center">
                 <Card.Title>Card Title</Card.Title>
-                <Link to={`/product/id`} className="btn btn-primary">
+                <Link to={`/products/:id`} className="btn btn-primary">
                   View More...
                 </Link>
               </Card.Body>
