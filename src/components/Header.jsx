@@ -3,8 +3,12 @@ import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { faTruck, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import { searchProduct } from "../redux/slices/productSlice";
 
 function Header({ insideProducts }) {
+  const dispatch = useDispatch();
+
   return (
     <Navbar expand="lg" className="bg-primary fixed-top">
       <Container>
@@ -19,6 +23,7 @@ function Header({ insideProducts }) {
             {insideProducts && (
               <Nav.Item>
                 <input
+                  onChange={(e) => dispatch(searchProduct(e.target.value))}
                   type="text"
                   className="form-control"
                   placeholder="Search Products Here"
