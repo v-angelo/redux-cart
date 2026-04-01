@@ -3,11 +3,15 @@ import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { faTruck, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchProduct } from "../redux/slices/productSlice";
 
 function Header({ insideProducts }) {
   const dispatch = useDispatch();
+
+  const userWishlist = useSelector((state) => state.wishlistReducer);
+
+  const userCart = useSelector((state) => state.cartReducer);
 
   return (
     <Navbar expand="lg" className="bg-primary fixed-top">
@@ -37,7 +41,7 @@ function Header({ insideProducts }) {
               <FontAwesomeIcon icon={faHeart} className="btn text-danger" />{" "}
               Wishlist{" "}
               <Badge pill bg="secondary">
-                10
+                {userWishlist?.length}
               </Badge>
             </Link>
             <Link
@@ -47,7 +51,7 @@ function Header({ insideProducts }) {
               <FontAwesomeIcon icon={faHeart} className="btn text-success" />{" "}
               Cart{" "}
               <Badge pill bg="secondary">
-                10
+                {userCart?.length}
               </Badge>
             </Link>
           </Nav>
