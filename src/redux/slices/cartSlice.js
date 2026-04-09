@@ -10,10 +10,11 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += 1;
         existingItem.totalPrice = existingItem.quantity * existingItem.price;
+
         const remainingItems = state?.filter(
-          (item) => item.id != existingItem.id,
+          (item) => item.id !== existingItem.id,
         );
-        return [...remainingItems, existingItem];
+        state = [...remainingItems, existingItem];
       } else {
         state.push({
           ...action.payload,
@@ -22,9 +23,47 @@ const cartSlice = createSlice({
         });
       }
     },
+
+    // remove cart item
+    removeCartItem: (state, action) => {
+      return state.filter((item) => item.id !== action.payload);
+    },
+
+    // increment cart
+    incrementCart: (state, action) => {
+      const existingProduct = state?.find((item) => item.id == action.payload);
+      const remainingItems = state.filter((item) => item.id !== action.payload);
+
+      existingProduct.quantity += 1;
+      existingProduct.totalPrice =
+        existingProduct.quantity * existingProduct.price;
+      state = [...remainingItems, existingProduct];
+    },
+
+    // decrement cart
+    decrementCart: (state, action) => {
+      const existingProduct = state?.find((item) => item.id == action.payload);
+      const remainingItems = state.filter((item) => item.id !== action.payload);
+
+      existingProduct.quantity -= 1;
+      existingProduct.totalPrice =
+        existingProduct.quantity * existingProduct.price;
+      state = [...remainingItems, existingProduct];
+    },
+
+    // empty cart
+    emptyCart: (state) => {
+      return [];
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeCartItem,
+  incrementCart,
+  decrementCart,
+  emptyCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

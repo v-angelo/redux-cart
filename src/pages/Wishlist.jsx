@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeWishlistItem } from "../redux/slices/wishlistSlice";
 import Swal from "sweetalert2";
 import { addToCart } from "../redux/slices/cartSlice";
+import { Link } from "react-router-dom";
 
 function Wishlist() {
   const userWishlist = useSelector((state) => state.wishlistReducer);
@@ -78,8 +79,9 @@ function Wishlist() {
               src="https://i.pinimg.com/564x/f6/e4/64/f6e464230662e7fa4c6a4afb92631aed.jpg"
               alt="emptyWishlist"
             />
-            {/* <h1>Your Wishlist is Empty!!</h1> */}
-            {/* <Link>Add More</Link> */}
+            <Link to={"/"} className="btn btn-primary mb-3">
+              Add More
+            </Link>
           </div>
         )}
       </section>

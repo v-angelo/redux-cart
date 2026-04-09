@@ -42,12 +42,13 @@ function View() {
   const handleCart = () => {
     // check whether the product is in cart
     const existingProduct = userCart?.find((item) => item.id == product?.id);
+
     dispatch(addToCart(product));
 
     Swal.fire({
       title: "Success!",
       text: existingProduct
-        ? `Product ${existingProduct.title} incremented!`
+        ? `Product ${existingProduct?.title} incremented!`
         : "Product added to cart!",
       icon: "success",
       confirmButtonText: "Ok",
